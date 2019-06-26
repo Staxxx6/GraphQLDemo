@@ -1,0 +1,14 @@
+# main configuration file for Prisma setup
+# dotamodel.prisma defines my application models. Each model will be mapped to a talbe in the underlying db. Prisma uses GraphQL SDL
+
+#endpoint: ""
+endpoint: http://localhost:4466
+
+datamodel: datamodel.prisma
+generate:
+  - generator: javascript-client
+    output: ..src/generated/prisma-client
+
+hooks:
+  post-deploy:
+    - prisma generate
